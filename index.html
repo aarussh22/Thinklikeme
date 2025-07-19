@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Think Like Me</title>
+  
+  <!-- Font Awesome for Chess Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- Your CSS file -->
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+
+  <!-- Hero Section -->
+  <section id="hero">
+    <video id="bgVideo" autoplay muted playsinline>
+      <source src="/assets/videos/chess.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+    <div id="heading" class="hidden">
+      <h1>Think like Me</h1>
+    </div>
+  </section>
+
+  <!-- Chess Options Section -->
+  <section id="options">
+    <div class="icon-grid">
+
+      <!-- King -->
+      <div class="icon-box">
+        <a href="/king.html">
+          <div class="king-wrapper">
+            <i class="fas fa-chess-king chess-icon"></i>
+            <div class="orbit-text">About Me</div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Knight -->
+      <div class="icon-box">
+        <a href="knight.html">
+          <div class="king-wrapper">
+            <i class="fas fa-chess-knight chess-icon"></i>
+            <div class="orbit-text">My Knight</div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Pawn -->
+      <div class="icon-box">
+        <a href="pawn.html">
+          <div class="king-wrapper">
+            <i class="fas fa-chess-pawn chess-icon"></i>
+            <div class="orbit-text">My Pawn</div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Bishop -->
+      <div class="icon-box">
+        <a href="bishop.html">
+          <div class="king-wrapper">
+            <i class="fas fa-chess-bishop chess-icon"></i>
+            <div class="orbit-text">My Bishop</div>
+          </div>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Feedback Slideshow Section -->
+  <section id="feedback-section">
+    <h2>What People Say</h2>
+    <div class="slideshow-container">
+      <div class="slide active">
+        <p style="color: aliceblue;">"This website totally changed how I think about chess. Truly inspiring!"</p>
+        <h4 style="color: aquamarine;">- Alex P.</h4>
+      </div>
+      <div class="slide">
+        <p style="color: aliceblue;">"Amazing coaching and content. I learned so much in a short time."</p>
+        <h4 style="color: aquamarine;">- Maria S.</h4>
+      </div>
+      <div class="slide">
+        <p style="color: aliceblue;">"The creativity and strategy tips helped me improve my game drastically."</p>
+        <h4 style="color: aquamarine;">- John D.</h4>
+      </div>
+    </div>
+    <div class="slide-controls">
+      <button id="prevBtn">&#10094;</button>
+      <button id="nextBtn">&#10095;</button>
+    </div>
+  </section>
+
+
+  <!-- Your JavaScript file -->
+  <script src="/assets/js/new.js"></script>
+</body>
+</html>
