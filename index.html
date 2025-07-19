@@ -1,26 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Think Like Me</title>
-  
+
   <!-- Font Awesome for Chess Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
   <!-- Your CSS file -->
   <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="preload" href="/css/styles.css" as="style" />
+
 </head>
+
 <body>
 
   <!-- Hero Section -->
   <section id="hero">
     <video id="bgVideo" autoplay muted playsinline>
-      <source src="/assets/videos/chess.mp4" type="video/mp4" />
+      <source src="assets/videos/blue-2-circuit.mp4" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
     <div id="heading" class="hidden">
-      <h1>Think like Me</h1>
+      <h1>Think Like Me</h1>
     </div>
   </section>
 
@@ -96,6 +100,18 @@
 
 
   <!-- Your JavaScript file -->
-  <script src="/assets/js/new.js"></script>
+  <script src="js/script.js"></script>
+  <script>
+    const video = document.getElementById('bgVideo');
+    const heading = document.getElementById('heading');
+
+    // When the video ends, show the heading
+    video.addEventListener('ended', () => {
+      heading.classList.remove('hidden');
+      heading.classList.add('show');
+    });
+  </script>
+
 </body>
+
 </html>
