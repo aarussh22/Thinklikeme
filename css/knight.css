@@ -1,0 +1,78 @@
+
+    body {
+        background: url('/images/videos/knight.png') no-repeat center center fixed;
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    .section-header {
+      text-align: center;
+      padding: 3rem 1rem 2rem;
+    }
+
+    .section-header h1 {
+      font-size: 2.5rem;
+      color: #00b4d8;
+    }
+
+    .description {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 1rem;
+      text-align: center;
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: #cce3f7;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      padding: 3rem 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .feature-box {
+      background: #1b263b;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease;
+    }
+
+    .feature-box:hover {
+      transform: translateY(-8px);
+    }
+
+    .feature-box i {
+      font-size: 2rem;
+      color: #00b4d8;
+      margin-bottom: 1rem;
+    }
+
+    .feature-box h3 {
+      color: #f1f1f1;
+      margin-bottom: 1rem;
+    }
+
+    .feature-box p {
+      color: #adcbe3;
+      font-size: 0.95rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      background-color: #0a1122;
+      color: #777;
+    }
+
+    @media (max-width: 500px) {
+      .section-header h1 {
+        font-size: 2rem;
+      }
+    }
