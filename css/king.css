@@ -1,0 +1,141 @@
+/* king.css - Styles specifically for king.html */
+
+/* Global background image for the full page */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  color: white;
+  background: url('/images/videos/Untitled\ design.png') no-repeat center center fixed;
+  background-size: cover;
+}
+
+/* Hero Section */
+#hero {
+  position: relative;
+  height: 50vh;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Remove video if using image background */
+#bgVideo {
+  display: none;
+}
+
+#heading {
+  position: relative;
+  text-align: center;
+  padding: 20px 40px;
+  border-radius: 10px;
+  z-index: 1;
+  opacity: 0;
+  transform: scale(0.8);
+  animation: fadeInHeading 5s ease-out forwards;
+}
+
+@keyframes fadeInHeading {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+#heading h1 {
+  color: #00b4d8;
+  font-size: 8em;
+  margin: 0;
+}
+
+/* About Section */
+.about-section {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 50px 20px;
+  max-width: 800px;
+  margin: 40px auto;
+  text-align: center;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.about-section p {
+  font-size: 1.2rem;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.about-section a {
+  color: #00b4d8;
+  font-size: 4rem;
+}
+
+/* Statistics Section */
+.rating-stats-section {
+  text-align: center;
+  margin: 4rem auto;
+  padding: 2rem 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.rating-stats-title {
+  color: whitesmoke;
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+}
+
+.rating-stats-container {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.rating-stat-box {
+  background: #1b263b;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 2rem;
+  width: 200px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease;
+}
+
+.rating-stat-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.rating-stat-box h2,
+.rating-stat-box h3 {
+  color: whitesmoke;
+  margin: 10px 0;
+}
+
+@media screen and (max-width: 600px) {
+  #heading h1 {
+    font-size: 2rem;
+  }
+
+  .rating-stats-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .rating-stat-box {
+    width: 90%;
+  }
+}
+
+ footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      background-color: #0a1122;
+      color: #777;
+    }
