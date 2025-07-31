@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Chess Puzzle Trainer</title>
+    <link rel="stylesheet" href="https://unpkg.com/chessboardjs@1.0.0/dist/chessboard.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+
+        #board {
+            width: 400px;
+            margin: 20px auto;
+        }
+
+        #info {
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+        }
+
+        #result {
+            font-weight: bold;
+            font-size: 18px;
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Chess Puzzle Challenge</h1>
+    <div id="board"></div>
+
+    <div id="info">
+        <p>Level: <span id="level">1</span> | Timer: <span id="timer">0</span> sec</p>
+        <button onclick="startPuzzle()">Start</button>
+        <button onclick="submitSolution()">Submit</button>
+        <p id="result"></p>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/1.0.0/chess.min.js"></script>
+    <script src="https://unpkg.com/chessboardjs@1.0.0/dist/chessboard.min.js"></script>
+    <script src="puzzles.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>
