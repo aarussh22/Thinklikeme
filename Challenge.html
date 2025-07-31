@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Your Chess Skills</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        .form-section,
+        .countdown-section {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-section h2,
+        .countdown-section h2 {
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+            font-weight: bold;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .submit-btn:hover {
+            background-color: #45a049;
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+            display: none;
+        }
+
+        .countdown-number {
+            font-size: 40px;
+            color: #4CAF50;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Section 1: User Form -->
+    <div class="form-section" id="formSection">
+        <h2>Enter Your Details</h2>
+        <form id="challengeForm">
+            <div class="form-group">
+                <label for="username">Full Name</label>
+                <input type="text" id="username" name="username" placeholder="John Doe">
+                <p class="error" id="nameError">Please enter your name.</p>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="example@email.com">
+                <p class="error" id="emailError">Please enter a valid email.</p>
+            </div>
+
+            <button type="submit" class="submit-btn">Start Challenge</button>
+        </form>
+    </div>
+
+    <!-- Section 2: Countdown -->
+    <div class="countdown-section" id="countdownSection" style="display: none;">
+        <h2>Form Submitted! Your Challenge Starts In...</h2>
+        <div class="countdown-number" id="countdown">5</div>
+    </div>
+
+    <script>
+        const form = document.getElementById("challengeForm");
+        const formSection = document.getElementById("formSection");
+        const countdownSection = document.getElementById("countdownSection");
+        const countdownDisplay = document.getElementById("countdown");
+
+        const nameField = document.getElementById("username");
+        const emailField = document.getElementById("email");
+        const nameError = document.getElementById("nameError");
+        const emailError = document.getElementById("emailError");
+
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            let valid = true;
+            nameError.style.display = "none";
+            emailError.style.display = "none";
+
+            if (nameField.value.trim() === "") {
+                nameError.style.display = "block";
+                valid = false;
+            }
+
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(emailField.value.trim())) {
+                emailError.style.display = "block";
+                valid = false;
+            }
+
+            if (valid) {
+                startCountdown();
+            }
+        });
+
+        function startCountdown() {
+            formSection.style.display = "none";
+            countdownSection.style.display = "block";
+
+            let timeLeft = 5;
+            countdownDisplay.textContent = timeLeft;
+
+            const timer = setInterval(() => {
+                timeLeft--;
+                countdownDisplay.textContent = timeLeft;
+
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    // For now, just reloads. Later will load the first puzzle.
+                    location.reload();
+                }
+            }, 1000);
+        }
+    </script>
+
+</body>
+
+</html>
