@@ -27,7 +27,7 @@ body, html {
   height: 100%;
   width: 100%;
   object-fit: cover;
-  z-index: -1;
+  z-index: 0;
 }
 
 /* Heading Animation */
@@ -89,6 +89,61 @@ body, html {
   align-items: center;
 }
 
+/* Dual Side Hover Text for All Icons */
+.dual-text {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dual-text .left-text,
+.dual-text .right-text {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.1rem;
+  color: #00ffff;
+  font-weight: 600;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.dual-text .left-text {
+  left: -80px;
+}
+
+.dual-text .right-text {
+  right: -80px;
+}
+
+.icon-box:hover .dual-text .left-text,
+.icon-box:hover .dual-text .right-text {
+  opacity: 1;
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* Wrapper that reacts when children are hovered */
+.icon-row-wrapper {
+  transition: box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+/* Highlight entire row when any icon is hovered */
+.icon-row-wrapper:hover {
+  box-shadow: 0 0 20px #00ffffaa;
+  background-color: rgba(0, 255, 255, 0.05);
+  border-radius: 12px;
+}
+
+/* Optional: Add smooth border glow */
+.icon-grid {
+  padding: 40px 0;
+  transition: background 0.3s ease;
+}
+
+
 .chess-icon {
   font-size: 6rem;
   color: white;
@@ -129,6 +184,8 @@ body, html {
   animation: pulse 2s infinite;
   z-index: 1;
 }
+
+
 
 @keyframes pulse {
   0% {

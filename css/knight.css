@@ -1,78 +1,119 @@
+/* Make sure html and body take full height */
+html, body {
+  height: 100%;
+  margin: 0;
+}
 
-    body {
-        background: url('/images/videos/knight.png') no-repeat center center fixed;
-      font-family: 'Segoe UI', sans-serif;
-      color: white;
-      margin: 0;
-      padding: 0;
-    }
+/* Flex container for sticky footer */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: url('/images/videos/knight.png') no-repeat center center fixed;
+  font-family: 'Segoe UI', sans-serif;
+  color: white;
+}
 
-    .section-header {
-      text-align: center;
-      padding: 3rem 1rem 2rem;
-    }
+/* Wrapper to hold header + features and take available space */
+.content-wrapper {
+  flex: 1; /* grow to fill vertical space */
+  display: flex;
+  flex-direction: column;
+}
 
-    .section-header h1 {
-      font-size: 2.5rem;
-      color: #00b4d8;
-    }
+.section-header {
+  text-align: center;
+  padding: 3rem 1rem 2rem;
+}
 
-    .description {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 0 1rem;
-      text-align: center;
-      font-size: 1.1rem;
-      line-height: 1.7;
-      color: #cce3f7;
-    }
+.section-header h1 {
+  font-size: 2.5rem;
+  color: #00b4d8;
+}
 
-    .features {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      padding: 3rem 2rem;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
+.description {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  text-align: center;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #cce3f7;
+}
 
-    .feature-box {
-      background: #1b263b;
-      padding: 2rem;
-      border-radius: 15px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.3);
-      transition: transform 0.3s ease;
-    }
+/* Features grid for 2 or 3 boxes */
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2.5rem 2rem;
+  padding: 3rem 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
 
-    .feature-box:hover {
-      transform: translateY(-8px);
-    }
+.feature-box {
+  background: #1b263b;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  height: 100%; /* full height for uniformity */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
 
-    .feature-box i {
-      font-size: 2rem;
-      color: #00b4d8;
-      margin-bottom: 1rem;
-    }
+.feature-box:hover {
+  transform: translateY(-8px);
+}
 
-    .feature-box h3 {
-      color: #f1f1f1;
-      margin-bottom: 1rem;
-    }
+.feature-box i {
+  font-size: 2rem;
+  color: #00b4d8;
+  margin-bottom: 1rem;
+}
 
-    .feature-box p {
-      color: #adcbe3;
-      font-size: 0.95rem;
-    }
+.feature-box h3 {
+  color: #f1f1f1;
+  margin-bottom: 1rem;
+}
 
-    footer {
-      text-align: center;
-      padding: 2rem 1rem;
-      background-color: #0a1122;
-      color: #777;
-    }
+.feature-box p {
+  color: #adcbe3;
+  font-size: 0.95rem;
+  flex-grow: 1; /* so paragraph pushes footer or other content down */
+}
 
-    @media (max-width: 500px) {
-      .section-header h1 {
-        font-size: 2rem;
-      }
-    }
+footer {
+  text-align: center;
+  padding: 2rem 1rem;
+  background-color: #0a1122;
+  color: #777;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .features {
+    grid-template-columns: 1fr;
+    gap: 2rem 0;
+    padding: 2rem 1rem;
+  }
+  .section-header h1 {
+    font-size: 2rem;
+  }
+}
+
+/* Link wrapper for the whole box */
+.feature-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  height: 100%;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.feature-link .feature-box:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 20px rgba(0, 255, 255, 0.2);
+}
