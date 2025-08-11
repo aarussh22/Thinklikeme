@@ -13,9 +13,30 @@
   <link rel="stylesheet" href="/css/styles.css" />
   <link rel="preload" href="/css/styles.css" as="style" />
 
+  <!-- java -->
+  <script src="js/script.js" defer></script>
+
+
 </head>
 
 <body>
+
+ <nav id="top-nav">
+  <div class="nav-left">
+    <a href="index.html" class="nav-icon"><i class="fas fa-home"></i></a>
+    <a href="king.html" class="nav-icon"><i class="fas fa-user"></i></a>
+    <a href="knight.html" class="nav-icon"><i class="fas fa-chess-knight"></i></a>
+  </div>
+
+  <!-- NEW site title in center -->
+<div id="nav-title">Think Like Me</div>
+
+  <div class="nav-right">
+    <a href="pawn.html" class="nav-icon"><i class="fas fa-chess-pawn icon"></i></a>
+  </div>
+</nav>
+
+
 
   <!-- Hero Section -->
   <section id="hero">
@@ -29,99 +50,132 @@
   </section>
 
   <!-- Chess Options Section -->
-  <section id="options">
-    <div class=" icon-row-wrapper">
-    <div class="icon-grid">
+  <section id="staircase-icons">
+    <!-- KING -->
+    <a href="king.html" class="stair-icon king alt-rotate">
+      <span class="icon-core">
+        <i class="fas fa-chess-king icon"></i>
 
-  <!-- King -->
-<div class="icon-box">
-  <a href="/king.html">
-    <div class="king-wrapper dual-text">
-      <div class="orbit-text left-text">About</div>
-      <i class="fas fa-chess-king chess-icon"></i>
-      <div class="orbit-text right-text">Me</div>
-    </div>
-  </a>
-</div>
+        <!-- Curved rotating text -->
+        <svg class="orbit-svg" viewBox="0 0 160 160" aria-hidden="true">
+          <defs>
+            <path id="path-king" d="M80,80 m-60,0 a60,60 0 1,1 120,0 a60,60 0 1,1 -120,0"></path>
+          </defs>
+          <text class="orbit-text">
+            <textPath href="#path-king" startOffset="0%">
+              ABOUT ME • ABOUT ME • ABOUT ME • ABOUT •
+            </textPath>
+          </text>
+        </svg>
+      </span>
+      <span class="label">About Me</span>
+    </a>
 
-<!-- Queen -->
-<div class="icon-box">
-  <a href="Queen.html">
-    <div class="king-wrapper dual-text">
-      <div class="orbit-text left-text">Learn</div>
-      <i class="fa-solid fa-chess-rook chess-icon"></i>
-      <div class="orbit-text right-text">with us</div>
-    </div>
-  </a>
-</div>
+    <!-- QUEEN -->
+    <a href="queen.html" class="stair-icon queen alt-rotate">
+      <span class="icon-core">
+        <i class="fas fa-chess-queen icon"></i>
 
-<!-- Knight -->
-<div class="icon-box">
-  <a href="knight.html">
-    <div class="king-wrapper dual-text">
-      <div class="orbit-text left-text">Test</div>
-      <i class="fas fa-chess-knight chess-icon"></i>
-      <div class="orbit-text right-text">Skills</div>
-    </div>
-  </a>
-</div>
+        <svg class="orbit-svg" viewBox="0 0 160 160" aria-hidden="true">
+          <defs>
+            <path id="path-queen" d="M80,80 m-60,0 a60,60 0 1,1 120,0 a60,60 0 1,1 -120,0"></path>
+          </defs>
+          <text class="orbit-text">
+            <textPath href="#path-queen" startOffset="0%">
+              CHALLENGE • CHALLENGE • CHALLENGE • E •
+            </textPath>
+          </text>
+        </svg>
+      </span>
+      <span class="label">Learn With Us</span>
+    </a>
 
-<!-- Pawn -->
-<div class="icon-box">
-  <a href="pawn.html">
-    <div class="king-wrapper dual-text">
-      <div class="orbit-text left-text">Book</div>
-      <i class="fas fa-chess-pawn chess-icon"></i>
-      <div class="orbit-text right-text">session</div>
-    </div>
-  </a>
-</div>
+    <!-- KNIGHT -->
+    <a href="knight.html" class="stair-icon knight alt-rotate">
+      <span class="icon-core">
+        <i class="fas fa-chess-knight icon"></i>
 
-</div>
+        <svg class="orbit-svg" viewBox="0 0 160 160" aria-hidden="true">
+          <defs>
+            <path id="path-knight" d="M80,80 m-60,0 a60,60 0 1,1 120,0 a60,60 0 1,1 -120,0"></path>
+          </defs>
+          <text class="orbit-text">
+            <textPath href="#path-knight" startOffset="0%">
+              LEAP INTO ACTION • LEAP INTO ACTION • LEAP INTO ACTION •
+            </textPath>
+          </text>
+        </svg>
+      </span>
+      <span class="label">Test Skills</span>
+    </a>
+
+    <!-- PAWN -->
+    <a href="pawn.html" class="stair-icon pawn alt-rotate">
+      <span class="icon-core">
+        <i class="fas fa-chess-pawn icon"></i>
+
+        <svg class="orbit-svg" viewBox="0 0 160 160" aria-hidden="true">
+          <defs>
+            <path id="path-pawn" d="M80,80 m-60,0 a60,60 0 1,1 120,0 a60,60 0 1,1 -120,0"></path>
+          </defs>
+          <text class="orbit-text">
+            <textPath href="#path-pawn" startOffset="0%">
+              BOOK A SESSION • BOOK A SESSION • BOOK  •
+            </textPath>
+          </text>
+        </svg>
+      </span>
+      <span class="label">Book Session</span>
+    </a>
+  </section>
+
+  <!-- Live Chess News Section -->
+  <section id="live-chess-news">
+    <h2>Chess News</h2>
+    <div id="news-list">
+      <p>Loading latest news…</p>
     </div>
   </section>
+
+  <!-- Chess Battles Section -->
+<section id="chess-battles">
+  <h2>Chess Battles</h2>
+  <p>Coming Soon</p>
+</section>
+
+
 
   <!-- Feedback Slideshow Section -->
   <section id="feedback-section">
-    <h2>What People Say</h2>
-    <div class="slideshow-container">
-      <div class="slide active">
-        <p style="color: aliceblue;">"This website totally changed how I think about chess. Truly inspiring!"</p>
-        <h4 style="color: aquamarine;">- Alex P.</h4>
-      </div>
-      <div class="slide">
-        <p style="color: aliceblue;">"Amazing coaching and content. I learned so much in a short time."</p>
-        <h4 style="color: aquamarine;">- Maria S.</h4>
-      </div>
-      <div class="slide">
-        <p style="color: aliceblue;">"The creativity and strategy tips helped me improve my game drastically."</p>
-        <h4 style="color: aquamarine;">- John D.</h4>
-      </div>
+  <h2>What People Say</h2>
+
+  <!-- Review Form -->
+  <form id="review-form" class="review-form">
+    <input type="text" id="review-name" placeholder="Your Name" required>
+    <input type="email" id="review-email" placeholder="Your Email" required>
+    
+    <div class="star-rating">
+      <span data-star="5">&#9733;</span>
+      <span data-star="4">&#9733;</span>
+      <span data-star="3">&#9733;</span>
+      <span data-star="2">&#9733;</span>
+      <span data-star="1">&#9733;</span>
     </div>
-    <div class="slide-controls">
-      <button id="prevBtn">&#10094;</button>
-      <button id="nextBtn">&#10095;</button>
-    </div>
-  </section>
+
+    <textarea id="review-comment" placeholder="Your comments..." required></textarea>
+    <button type="submit" class="btn-submit">Post Review</button>
+  </form>
+
+  <!-- Slideshow -->
+  <div class="slideshow-container" id="review-slideshow"></div>
+</section>
 
 
-  <!-- Your JavaScript file -->
-  <script src="js/script.js"></script>
-  <script>
-    const video = document.getElementById('bgVideo');
-    const heading = document.getElementById('heading');
-
-    // When the video ends, show the heading
-    video.addEventListener('ended', () => {
-      heading.classList.remove('hidden');
-      heading.classList.add('show');
-    });
-  </script>
-
-    <footer>
+  <footer>
     &copy; 2025 Think Like Me – Learn Chess the Smarter Way
   </footer>
 
+  <!-- Your JavaScript file -->
+  <script src="/js/script.js"></script>
 </body>
-
 </html>

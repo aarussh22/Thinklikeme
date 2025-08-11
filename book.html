@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Book Your Class – Think Like Me</title>
+  <link rel="stylesheet" href="css/book.css" />
+</head>
+<body>
+
+  <!-- Curved marquee (animated) -->
+  <header class="curve-wrap" aria-hidden="true">
+    <svg class="curve" viewBox="0 0 1200 260" preserveAspectRatio="none">
+      <path id="book-curve"
+            d="M 0 240 C 220 160, 360 40, 520 40 
+               S 860 160, 1200 20"
+            fill="none" stroke="transparent" />
+      <text class="curve-text">
+        <textPath href="#book-curve" startOffset="100%">
+          BOOK TODAY • BOOK TODAY • BOOK TODAY • BOOK TODAY • BOOK TODAY •
+          <animate attributeName="startOffset" from="100%" to="0%" dur="9s" repeatCount="indefinite" />
+        </textPath>
+      </text>
+    </svg>
+  </header>
+
+  <main class="container">
+    <h1 class="title">
+      <span>Book</span>
+      <span class="stroke">Your Class</span>
+    </h1>
+
+    <!-- Booking block -->
+    <section class="booking">
+      <!-- Left: image box -->
+      <div class="booking-media" role="img" aria-label="Think Like Me – chess visual">
+        <!-- Update the src to your actual file path/name -->
+        <img src="/images/videos/51ace954-890d-4b14-875e-003417c8d308.png" alt="Think Like Me King Piece" />
+      </div>
+
+      <!-- Right: simplified email form -->
+      <form class="booking-form"
+            action="mailto:aarush@gmail.com"
+            method="POST"
+            enctype="text/plain">
+
+        <label>
+          Full Name
+          <input type="text" name="Name" placeholder="Your name" required>
+        </label>
+
+        <label>
+          Email Address
+          <input type="email" name="Email" placeholder="you@example.com" required>
+        </label>
+
+        <label>
+          Select Pack
+          <select name="Pack" required>
+            <option value="" disabled selected>Select a pack</option>
+            <option value="Starter">Starter</option>
+            <option value="Growth">Growth</option>
+            <option value="Elite">Elite</option>
+            <option value="Trial">Trial</option>
+          </select>
+        </label>
+
+        <label>
+          Preferred Dates
+          <textarea name="Preferred Dates" rows="3" placeholder="Which dates work best for you?"></textarea>
+        </label>
+
+        <button class="btn" type="submit">Book Now</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="foot">
+    © 2025 Think Like Me
+  </footer>
+
+</body>
+</html>

@@ -1,13 +1,38 @@
-/* king.css - Styles specifically for king.html */
+/* king.css - Cream (#FFEAC9) + Black theme */
 
-/* Global background image for the full page */
+/* =========================
+   Theme variables
+   ========================= */
+:root {
+  --accent: #FFEAC9;                         
+  --accent-10: rgba(255,234,201,0.10);
+  --accent-20: rgba(255,234,201,0.20);
+  --accent-27: rgba(255,234,201,0.27);
+  --accent-40: rgba(255,234,201,0.40);
+  --accent-55: rgba(255,234,201,0.55);
+  --accent-60: rgba(255,234,201,0.60);
+  --accent-80: rgba(255,234,201,0.80);
+
+  --bg: #000;        
+  --panel: #111;     
+  --panel-2: #1a1a1a;
+  --text: #fff;      
+  --muted: #cfcfcf;  
+}
+
+/* Global page setup */
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  color: white;
-  background: url('/images/videos/Untitled\ design.png') no-repeat center center fixed;
+  color: var(--text);
+
+  /* Keep your king wallpaper */
+  background: 
+    linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), /* transparent black overlay */
+    url('/images/videos/Untitled design.png') no-repeat center center fixed;
   background-size: cover;
 }
+
 
 /* Hero Section */
 #hero {
@@ -18,22 +43,23 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  background: var(--panel);
 }
 
-/* Remove video if using image background */
 #bgVideo {
-  display: none;
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  z-index: 0;
 }
 
 #heading {
   position: relative;
-  text-align: center;
-  padding: 20px 40px;
-  border-radius: 10px;
   z-index: 1;
   opacity: 0;
   transform: scale(0.8);
-  animation: fadeInHeading 5s ease-out forwards;
+  animation: fadeInHeading 1.5s ease-out forwards;
 }
 
 @keyframes fadeInHeading {
@@ -44,34 +70,50 @@ body {
 }
 
 #heading h1 {
-  color: #00b4d8;
-  font-size: 8em;
-  margin: 0;
+  color: var(--accent);
+  font-size: 4rem;
+  text-shadow: 0 0 10px var(--accent-20);
 }
 
 /* About Section */
-.about-section {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  padding: 50px 20px;
-  max-width: 800px;
+#about {
+  background: rgba(0, 0, 0, 0.55); /* semi-transparent black */
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 234, 201, 0.27); /* cream border */
+  border-radius: 12px;
+
+  max-width: 850px;
   margin: 40px auto;
+  padding: 40px 30px;
+
+  color: #FFEAC9; /* cream text */
   text-align: center;
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  line-height: 1.7;
+  font-size: 1.15rem;
+
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
 }
 
-.about-section p {
-  font-size: 1.2rem;
-  line-height: 1.7;
+#about strong {
+  color: #FFEAC9; /* keep strong text cream */
+  font-weight: bold;
+}
+
+#about p {
   margin-bottom: 20px;
 }
 
-.about-section a {
-  color: #00b4d8;
-  font-size: 4rem;
+@media (max-width: 700px) {
+  #about {
+    padding: 25px 20px;
+    font-size: 1rem;
+  }
 }
+
+
+
+
 
 /* Statistics Section */
 .rating-stats-section {
@@ -80,12 +122,16 @@ body {
   padding: 2rem 1rem;
   position: relative;
   z-index: 1;
+  background: var(--panel);
+  border-top: 2px solid var(--accent-40);
+  border-bottom: 2px solid var(--accent-40);
 }
 
 .rating-stats-title {
-  color: whitesmoke;
+  color: var(--accent);
   margin-bottom: 2rem;
   font-size: 2.5rem;
+  text-shadow: 0 0 6px var(--accent-20);
 }
 
 .rating-stats-container {
@@ -98,44 +144,47 @@ body {
 }
 
 .rating-stat-box {
-  background: #1b263b;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: var(--panel-2);
+  border: 1px solid var(--accent-20);
   padding: 2rem;
   width: 200px;
   border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-  transition: transform 0.3s ease;
+  box-shadow: 0 0 15px var(--accent-10);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .rating-stat-box:hover {
   transform: translateY(-5px);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 25px var(--accent-40);
 }
 
-.rating-stat-box h2,
-.rating-stat-box h3 {
-  color: whitesmoke;
+.rating-stat-box h2 {
+  color: var(--accent);
   margin: 10px 0;
+}
+
+.rating-stat-box h3 {
+  color: var(--text);
+  margin: 10px 0;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 2rem 1rem;
+  background-color: var(--panel);
+  color: var(--muted);
 }
 
 @media screen and (max-width: 600px) {
   #heading h1 {
-    font-size: 2rem;
+    font-size: 2.2rem;
   }
-
   .rating-stats-container {
     flex-direction: column;
     align-items: center;
   }
-
   .rating-stat-box {
     width: 90%;
   }
 }
-
- footer {
-      text-align: center;
-      padding: 2rem 1rem;
-      background-color: #0a1122;
-      color: #777;
-    }

@@ -79,3 +79,9 @@ function resetGame() {
     document.getElementById("level").innerText = "1";
     board.position('start');
 }
+
+
+
+//news 
+
+

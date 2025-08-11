@@ -1,119 +1,293 @@
-/* Make sure html and body take full height */
-html, body {
-  height: 100%;
-  margin: 0;
+/* =========================
+   Theme variables (Cream + Black)
+   ========================= */
+:root{
+  --accent: #FFEAC9;
+  --accent-10: rgba(255,234,201,0.10);
+  --accent-20: rgba(255,234,201,0.20);
+  --accent-27: rgba(255,234,201,0.27);
+  --accent-40: rgba(255,234,201,0.40);
+  --accent-60: rgba(255,234,201,0.60);
+  --accent-80: rgba(255,234,201,0.80);
+
+  --bg: #000;
+  --text: #fff;
+  --panel: rgba(0,0,0,0.55);
+  --panel-solid: #111;
 }
 
-/* Flex container for sticky footer */
-body {
+/* =========================
+   Base & layout
+   ========================= */
+html, body { height: 100%; margin: 0; }
+body{
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   background: url('/images/videos/knight.png') no-repeat center center fixed;
-  font-family: 'Segoe UI', sans-serif;
-  color: white;
+  background-size: cover;
+  color: var(--text);
+  font-family: 'Segoe UI', Arial, sans-serif;
+  position: relative;
 }
 
-/* Wrapper to hold header + features and take available space */
-.content-wrapper {
-  flex: 1; /* grow to fill vertical space */
+/* soft dark overlay over wallpaper for contrast */
+.page-overlay{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* content wrapper sits above overlay */
+.content-wrapper{
+  flex: 1;
   display: flex;
   flex-direction: column;
+  position: relative;
+  z-index: 1;
 }
 
-.section-header {
+/* =========================
+   Header
+   ========================= */
+.section-header{
   text-align: center;
   padding: 3rem 1rem 2rem;
 }
 
-.section-header h1 {
-  font-size: 2.5rem;
-  color: #00b4d8;
+.section-header h1{
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  margin: 0 0 .75rem;
+  color: var(--accent);
+  text-shadow: 0 0 10px var(--accent-20);
 }
 
-.description {
+.description{
   max-width: 900px;
   margin: 0 auto;
   padding: 0 1rem;
-  text-align: center;
   font-size: 1.1rem;
   line-height: 1.7;
-  color: #cce3f7;
+  color: #f0f0f0;
 }
 
-/* Features grid for 2 or 3 boxes */
-.features {
+/* =========================
+   Features grid
+   ========================= */
+.features{
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2.5rem 2rem;
+  gap: 2.2rem;
   padding: 3rem 2rem;
   max-width: 1100px;
   margin: 0 auto;
 }
 
-.feature-box {
-  background: #1b263b;
-  padding: 2rem;
-  border-radius: 15px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.3);
-  transition: transform 0.3s ease;
-  cursor: pointer;
-  height: 100%; /* full height for uniformity */
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
-
-.feature-box:hover {
-  transform: translateY(-8px);
-}
-
-.feature-box i {
-  font-size: 2rem;
-  color: #00b4d8;
-  margin-bottom: 1rem;
-}
-
-.feature-box h3 {
-  color: #f1f1f1;
-  margin-bottom: 1rem;
-}
-
-.feature-box p {
-  color: #adcbe3;
-  font-size: 0.95rem;
-  flex-grow: 1; /* so paragraph pushes footer or other content down */
-}
-
-footer {
-  text-align: center;
-  padding: 2rem 1rem;
-  background-color: #0a1122;
-  color: #777;
-}
-
-/* Responsive tweaks */
-@media (max-width: 768px) {
-  .features {
-    grid-template-columns: 1fr;
-    gap: 2rem 0;
-    padding: 2rem 1rem;
-  }
-  .section-header h1 {
-    font-size: 2rem;
-  }
-}
-
-/* Link wrapper for the whole box */
-.feature-link {
+.feature-link{
   text-decoration: none;
   color: inherit;
   display: block;
   height: 100%;
-  transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.feature-link .feature-box:hover {
-  transform: scale(1.03);
-  box-shadow: 0 8px 20px rgba(0, 255, 255, 0.2);
+.feature-box{
+  background: var(--panel);                  /* glassy panel over wallpaper */
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid var(--accent-27);
+  border-radius: 16px;
+
+  padding: 2rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  box-shadow: 0 0 18px rgba(0,0,0,0.35), 0 0 20px var(--accent-10) inset;
+}
+
+.feature-box:hover{
+  transform: translateY(-6px);
+  border-color: var(--accent-60);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4), 0 0 28px var(--accent-40) inset;
+}
+
+.feature-box i{
+  font-size: 2.2rem;
+  color: var(--accent);
+  margin-bottom: 1rem;
+  text-shadow: 0 0 10px var(--accent-20);
+}
+
+.feature-box h3{
+  color: #ffffff;
+  margin: 0 0 .6rem;
+  font-size: 1.2rem;
+}
+
+.feature-box p{
+  color: #e6e6e6;
+  font-size: 0.98rem;
+  line-height: 1.6;
+  margin: 0;
+  flex-grow: 1;
+}
+
+/* =========================
+   Footer
+   ========================= */
+footer{
+  text-align: center;
+  padding: 2rem 1rem;
+  background: #0a0a0a;
+  color: #8b8b8b;
+}
+
+/* =========================
+   Responsive tweaks
+   ========================= */
+@media (max-width: 768px){
+  .features{
+    grid-template-columns: 1fr;
+    gap: 1.4rem;
+    padding: 2rem 1rem;
+  }
+  .section-header h1{ font-size: 1.9rem; }
+}
+
+/* =========================
+   Modal (shared) + Pyramid
+   ========================= */
+.modal{
+  position: fixed; inset: 0;
+  display: grid; place-items: center;
+  z-index: 1000;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .25s ease;
+}
+.modal[aria-hidden="false"]{
+  pointer-events: auto;
+  opacity: 1;
+}
+
+.modal-backdrop{
+  position: absolute; inset: 0;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.modal-card{
+  position: relative;
+  width: min(860px, 92vw);
+  max-height: 86vh;
+  overflow: auto;
+  padding: 28px 22px 32px;
+  border-radius: 16px;
+
+  /* glass effect */
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  border: 1px solid var(--accent-27);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.6), 0 0 28px var(--accent-20);
+
+  outline: none;
+}
+
+.modal-close{
+  position: absolute; top: 8px; right: 12px;
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #000;
+  border: none;
+  font-size: 1.6rem;
+  font-weight: 700;
+  cursor: pointer;
+  line-height: 1;
+  display: grid; place-items: center;
+  transition: transform .08s ease, filter .2s ease;
+}
+.modal-close:hover{ filter: brightness(.93); }
+.modal-close:active{ transform: translateY(1px); }
+
+.modal-title{
+  margin: 6px 10px 18px;
+  font-size: clamp(1.6rem, 3.6vw, 2.2rem);
+  color: var(--accent);
+  text-align: center;
+  text-shadow: 0 0 10px var(--accent-20);
+}
+
+/* Pyramid */
+.pyramid{
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  gap: 14px;
+  perspective: 1500px;
+  transform-style: preserve-3d;
+  padding: 4px 6px 8px;
+}
+
+.level {
+  width: 100%;
+  max-width: 760px;
+  padding: 18px 20px;
+  border-radius: 12px;
+
+  background: linear-gradient(145deg, rgba(18,18,18,0.75), rgba(36,36,36,0.75));
+  border: 1px solid var(--accent-27);
+  box-shadow:
+    0 6px 16px rgba(0,0,0,0.5),
+    inset 0 0 18px var(--accent-10);
+
+  transform-style: preserve-3d;
+  transition: transform .45s ease, box-shadow .45s ease, border-color .3s ease;
+  cursor: default;
+
+  display: flex;             /* NEW: flexbox */
+  align-items: center;       /* NEW: vertical center */
+  justify-content: center;   /* NEW: horizontal center */
+  text-align: center;        /* fallback text center */
+}
+
+.level span {
+  transform: translateZ(20px);
+  font-size: clamp(1.1rem, 2.2vw, 1.4rem);
+  font-weight: 600;
+  color: #fff;
+  text-shadow:
+    0 0 0.01px #000,
+    0 0 14px var(--accent-40);
+}
+
+.level:hover{
+  transform: rotateY(14deg) translateZ(18px);
+  box-shadow:
+    0 18px 30px rgba(0,0,0,0.6),
+    inset 0 0 24px var(--accent-20);
+  border-color: var(--accent-60);
+}
+
+
+
+/* widths per tier for pyramid feel */
+.level-1{ width: 95%; }
+.level-2{ width: 85%; }
+.level-3{ width: 70%; }
+.level-4{ width: 55%; }
+.level-5{ width: 40%; }
+
+
+@media (max-width: 600px){
+  .level-1{ width: 100%; }
+  .level-2{ width: 90%; }
+  .level-3{ width: 80%; }
+  .level-4{ width: 65%; }
+  .level-5{ width: 50%; }
 }
