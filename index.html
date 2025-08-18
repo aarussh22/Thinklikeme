@@ -1,42 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Think Like Me</title>
 
-  <!-- Font Awesome for Chess Icons -->
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
-  <!-- Your CSS file -->
+  <!-- CSS (relative paths for GitHub Pages project sites) -->
   <link rel="stylesheet" href="css/styles.css" />
   <link rel="preload" href="css/styles.css" as="style" />
 
-  <!-- java -->
+  <!-- JS (single include; keep defer) -->
   <script src="js/script.js" defer></script>
-
-
 </head>
-
 <body>
-
- <nav id="top-nav">
-  <div class="nav-left">
-    <a href="index.html" class="nav-icon"><i class="fas fa-home"></i></a>
-    <a href="king.html" class="nav-icon"><i class="fas fa-user"></i></a>
-    <a href="knight.html" class="nav-icon"><i class="fas fa-chess-knight"></i></a>
-  </div>
-
-  <!-- NEW site title in center -->
-<div id="nav-title">Think Like Me</div>
-
-  <div class="nav-right">
-    <a href="pawn.html" class="nav-icon"><i class="fas fa-chess-pawn icon"></i></a>
-  </div>
-</nav>
-
-
+  <nav id="top-nav">
+    <div class="nav-left">
+      <a href="index.html" class="nav-icon"><i class="fas fa-home"></i></a>
+      <a href="king.html" class="nav-icon"><i class="fas fa-user"></i></a>
+      <a href="knight.html" class="nav-icon"><i class="fas fa-chess-knight"></i></a>
+    </div>
+    <div id="nav-title">Think Like Me</div>
+    <div class="nav-right">
+      <a href="pawn.html" class="nav-icon"><i class="fas fa-chess-pawn icon"></i></a>
+    </div>
+  </nav>
 
   <!-- Hero Section -->
   <section id="hero">
@@ -49,22 +39,18 @@
     </div>
   </section>
 
-  <!-- Chess Options Section -->
+  <!-- Staircase icons -->
   <section id="staircase-icons">
     <!-- KING -->
     <a href="king.html" class="stair-icon king alt-rotate">
       <span class="icon-core">
         <i class="fas fa-chess-king icon"></i>
-
-        <!-- Curved rotating text -->
         <svg class="orbit-svg" viewBox="0 0 160 160" aria-hidden="true">
           <defs>
             <path id="path-king" d="M80,80 m-60,0 a60,60 0 1,1 120,0 a60,60 0 1,1 -120,0"></path>
           </defs>
           <text class="orbit-text">
-            <textPath href="#path-king" startOffset="0%">
-              ABOUT ME • ABOUT ME • ABOUT ME • ABOUT •
-            </textPath>
+            <textPath href="#path-king" startOffset="0%">ABOUT ME • ABOUT ME • ABOUT ME • ABOUT •</textPath>
           </text>
         </svg>
       </span>
@@ -75,15 +61,12 @@
     <a href="queen.html" class="stair-icon queen alt-rotate">
       <span class="icon-core">
         <i class="fas fa-chess-queen icon"></i>
-
         <svg class="orbit-svg" viewBox="0 0 160 160" aria-hidden="true">
           <defs>
             <path id="path-queen" d="M80,80 m-60,0 a60,60 0 1,1 120,0 a60,60 0 1,1 -120,0"></path>
           </defs>
           <text class="orbit-text">
-            <textPath href="#path-queen" startOffset="0%">
-              CHALLENGE • CHALLENGE • CHALLENGE • E •
-            </textPath>
+            <textPath href="#path-queen" startOffset="0%">CHALLENGE • CHALLENGE • CHALLENGE • E •</textPath>
           </text>
         </svg>
       </span>
@@ -94,15 +77,12 @@
     <a href="knight.html" class="stair-icon knight alt-rotate">
       <span class="icon-core">
         <i class="fas fa-chess-knight icon"></i>
-
         <svg class="orbit-svg" viewBox="0 0 160 160" aria-hidden="true">
           <defs>
             <path id="path-knight" d="M80,80 m-60,0 a60,60 0 1,1 120,0 a60,60 0 1,1 -120,0"></path>
           </defs>
           <text class="orbit-text">
-            <textPath href="#path-knight" startOffset="0%">
-              LEAP INTO ACTION • LEAP INTO ACTION • LEAP INTO ACTION •
-            </textPath>
+            <textPath href="#path-knight" startOffset="0%">LEAP INTO ACTION • LEAP INTO ACTION • LEAP INTO ACTION •</textPath>
           </text>
         </svg>
       </span>
@@ -113,15 +93,12 @@
     <a href="pawn.html" class="stair-icon pawn alt-rotate">
       <span class="icon-core">
         <i class="fas fa-chess-pawn icon"></i>
-
         <svg class="orbit-svg" viewBox="0 0 160 160" aria-hidden="true">
           <defs>
             <path id="path-pawn" d="M80,80 m-60,0 a60,60 0 1,1 120,0 a60,60 0 1,1 -120,0"></path>
           </defs>
           <text class="orbit-text">
-            <textPath href="#path-pawn" startOffset="0%">
-              BOOK A SESSION • BOOK A SESSION • BOOK  •
-            </textPath>
+            <textPath href="#path-pawn" startOffset="0%">BOOK A SESSION • BOOK A SESSION • BOOK •</textPath>
           </text>
         </svg>
       </span>
@@ -132,50 +109,34 @@
   <!-- Live Chess News Section -->
   <section id="live-chess-news">
     <h2>Chess News</h2>
-    <div id="news-list">
-      <p>Loading latest news…</p>
-    </div>
+    <div id="news-list"><p>Loading latest news…</p></div>
   </section>
 
   <!-- Chess Battles Section -->
-<section id="chess-battles">
-  <h2>Chess Battles</h2>
-  <p>Coming Soon</p>
-</section>
-
-
+  <section id="chess-battles">
+    <h2>Chess Battles</h2>
+    <p>Coming Soon</p>
+  </section>
 
   <!-- Feedback Slideshow Section -->
   <section id="feedback-section">
-  <h2>What People Say</h2>
+    <h2>What People Say</h2>
+    <form id="review-form" class="review-form">
+      <input type="text" id="review-name" placeholder="Your Name" required>
+      <input type="email" id="review-email" placeholder="Your Email" required>
+      <div class="star-rating">
+        <span data-star="5">&#9733;</span>
+        <span data-star="4">&#9733;</span>
+        <span data-star="3">&#9733;</span>
+        <span data-star="2">&#9733;</span>
+        <span data-star="1">&#9733;</span>
+      </div>
+      <textarea id="review-comment" placeholder="Your comments..." required></textarea>
+      <button type="submit" class="btn-submit">Post Review</button>
+    </form>
+    <div class="slideshow-container" id="review-slideshow"></div>
+  </section>
 
-  <!-- Review Form -->
-  <form id="review-form" class="review-form">
-    <input type="text" id="review-name" placeholder="Your Name" required>
-    <input type="email" id="review-email" placeholder="Your Email" required>
-    
-    <div class="star-rating">
-      <span data-star="5">&#9733;</span>
-      <span data-star="4">&#9733;</span>
-      <span data-star="3">&#9733;</span>
-      <span data-star="2">&#9733;</span>
-      <span data-star="1">&#9733;</span>
-    </div>
-
-    <textarea id="review-comment" placeholder="Your comments..." required></textarea>
-    <button type="submit" class="btn-submit">Post Review</button>
-  </form>
-
-  <!-- Slideshow -->
-  <div class="slideshow-container" id="review-slideshow"></div>
-</section>
-
-
-  <footer>
-    &copy; 2025 Think Like Me – Learn Chess the Smarter Way
-  </footer>
-
-  <!-- Your JavaScript file -->
-  <script src="/js/script.js"></script>
+  <footer>&copy; 2025 Think Like Me – Learn Chess the Smarter Way</footer>
 </body>
 </html>
