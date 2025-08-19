@@ -45,6 +45,7 @@ body {
   justify-content: center;
   align-items: center;
   background: var(--panel);
+  z-index: -1;
 }
 
 #bgVideo {
