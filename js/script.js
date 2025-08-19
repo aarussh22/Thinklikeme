@@ -14,42 +14,54 @@ if (video && heading) {
   setTimeout(showHeroHeading, 2500);
 }
 
-// ===== Fetch Chess News =====
+// ===== Fetch Chess News (using chess.com/rss/news) =====
 async function fetchChessNews() {
-  const feedUrl = encodeURIComponent("https://www.chess.com/news/rss");
-  const url = `https://api.rss2json.com/v1/api.json?rss_url=${feedUrl}`;
+  const feedUrl = encodeURIComponent("https://www.chess.com/rss/news");
+  const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${feedUrl}`;
   const container = document.getElementById("news-list");
   if (!container) return;
-  container.innerHTML = '<p>Loading...</p>';
+  container.innerHTML = '<p>Loading news…</p>';
 
   try {
-    const res = await fetch(url);
+    const res = await fetch(apiUrl);
+    if (!res.ok) throw new Error(`HTTP error ${res.status}`);
     const data = await res.json();
     container.innerHTML = '';
 
-    // Just one article for now
-    (data.items || []).slice(0, 1).forEach(item => {
-      const a = document.createElement('a');
-      a.href = item.link;
-      a.target = '_blank';
-      a.className = 'news-card';
-
-      // Strip HTML tags from description
-      const cleanDesc = item.description.replace(/<[^>]+>/g, '').substring(0, 200) + "...";
-
-      a.innerHTML = `<h3>${item.title}</h3><p>${cleanDesc}</p>`;
-      container.appendChild(a);
-    });
-
-    if (!container.children.length) {
+    const items = data.items || [];
+    if (items.length === 0) {
       container.innerHTML = '<p>No news found.</p>';
+      return;
     }
-  } catch (err) {
+
+    // Take just the first item for now
+    const item = items[0];
+    const link = item.link;
+    const title = item.title;
+    const pubDate = item.pubDate ? new Date(item.pubDate).toLocaleString() : '';
+    // Strip HTML from description and shorten
+    const rawDesc = item.description || '';
+    const cleanDesc = rawDesc.replace(/<[^>]+>/g, '').trim();
+    const shortDesc = cleanDesc.length > 200 ? cleanDesc.slice(0, 200) + '…' : cleanDesc;
+
+    const article = document.createElement('article');
+    article.className = 'news-card';
+
+    article.innerHTML = `
+      <h3><a href="${link}" target="_blank" rel="noopener">${title}</a></h3>
+      <small>${pubDate}</small>
+      <p>${shortDesc}</p>
+    `;
+    container.appendChild(article);
+  }
+  catch (err) {
     console.error('Error fetching news:', err);
     container.innerHTML = '<p>Failed to load news.</p>';
   }
 }
+
 document.addEventListener('DOMContentLoaded', fetchChessNews);
+
 
 
 // ===== Feedback slideshow =====
