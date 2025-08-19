@@ -4,20 +4,20 @@
    Theme variables
    ========================= */
 :root {
-  --accent: #FFEAC9;                         
-  --accent-10: rgba(255,234,201,0.10);
-  --accent-20: rgba(255,234,201,0.20);
-  --accent-27: rgba(255,234,201,0.27);
-  --accent-40: rgba(255,234,201,0.40);
-  --accent-55: rgba(255,234,201,0.55);
-  --accent-60: rgba(255,234,201,0.60);
-  --accent-80: rgba(255,234,201,0.80);
+  --accent: #FFEAC9;
+  --accent-10: rgba(255, 234, 201, 0.10);
+  --accent-20: rgba(255, 234, 201, 0.20);
+  --accent-27: rgba(255, 234, 201, 0.27);
+  --accent-40: rgba(255, 234, 201, 0.40);
+  --accent-55: rgba(255, 234, 201, 0.55);
+  --accent-60: rgba(255, 234, 201, 0.60);
+  --accent-80: rgba(255, 234, 201, 0.80);
 
-  --bg: #000;        
-  --panel: #111;     
+  --bg: #000;
+  --panel: #111;
   --panel-2: #1a1a1a;
-  --text: #fff;      
-  --muted: #cfcfcf;  
+  --text: #fff;
+  --muted: #cfcfcf;
 }
 
 /* Global page setup */
@@ -27,9 +27,10 @@ body {
   color: var(--text);
 
   /* Keep your king wallpaper */
-  background: 
-    linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), /* transparent black overlay */
-    url('/images/videos/Untitled\ design.png') no-repeat center center fixed;
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    /* transparent black overlay */
+    url('/images/videos/king_image.png') no-repeat center center fixed;
   background-size: cover;
 }
 
@@ -48,8 +49,10 @@ body {
 
 #bgVideo {
   position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   z-index: 0;
 }
@@ -59,7 +62,7 @@ body {
   z-index: 1;
   opacity: 0;
   transform: scale(0.8);
-  animation:fadeInHeading 1.5s ease-out forwards;
+  animation: fadeInHeading 1.5s ease-out forwards;
 }
 
 @keyframes fadeInHeading {
@@ -77,17 +80,20 @@ body {
 
 /* About Section */
 #about {
-  background: rgba(0, 0, 0, 0.55); /* semi-transparent black */
+  background: rgba(0, 0, 0, 0.55);
+  /* semi-transparent black */
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
-  border: 1px solid rgba(255, 234, 201, 0.27); /* cream border */
+  border: 1px solid rgba(255, 234, 201, 0.27);
+  /* cream border */
   border-radius: 12px;
 
   max-width: 850px;
   margin: 40px auto;
   padding: 40px 30px;
 
-  color: #FFEAC9; /* cream text */
+  color: #FFEAC9;
+  /* cream text */
   text-align: center;
   line-height: 1.7;
   font-size: 1.15rem;
@@ -96,7 +102,8 @@ body {
 }
 
 #about strong {
-  color: #FFEAC9; /* keep strong text cream */
+  color: #FFEAC9;
+  /* keep strong text cream */
   font-weight: bold;
 }
 
@@ -180,10 +187,12 @@ footer {
   #heading h1 {
     font-size: 2.2rem;
   }
+
   .rating-stats-container {
     flex-direction: column;
     align-items: center;
   }
+
   .rating-stat-box {
     width: 90%;
   }

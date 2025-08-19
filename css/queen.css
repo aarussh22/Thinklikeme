@@ -1,7 +1,7 @@
 :root {
   --accent: #FFEAC9;
-  --accent-20: rgba(255,234,201,.20);
-  --accent-35: rgba(255,234,201,.35);
+  --accent-20: rgba(255, 234, 201, .20);
+  --accent-35: rgba(255, 234, 201, .35);
   --bg: #000;
   --text: #fff;
 }
@@ -12,11 +12,19 @@
   padding: 0;
 }
 
+
 body {
   font-family: 'Segoe UI', sans-serif;
   background-color: var(--bg);
   color: var(--text);
   line-height: 1.6;
+
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    /* transparent black overlay */
+    url('/images/videos/quuen.png') no-repeat center center fixed;
+  background-size: cover;
+
 }
 
 .header {
@@ -47,11 +55,13 @@ body {
   padding: 2rem 1rem;
 }
 
-.rules, .leaderboard {
+.rules,
+.leaderboard {
   margin-bottom: 2rem;
 }
 
-.rules h2, .leaderboard h2 {
+.rules h2,
+.leaderboard h2 {
   color: var(--accent);
   margin-bottom: 1rem;
   border-bottom: 2px solid var(--accent-35);
