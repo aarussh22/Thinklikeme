@@ -29,9 +29,12 @@ body {
   /* Keep your king wallpaper */
   background:
     linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-    /* transparent black overlay */
-    url('/Thinklikeme/images/videos/king_image.png') no-repeat center center fixed;
-  background-size: cover;
+    /* overlay */
+    url('/Thinklikeme/images/videos/king_image.png') no-repeat center center fixed,
+    url('/images/videos/king_image.png') no-repeat center center fixed;
+
+  background-size: cover, cover, cover;
+
 }
 
 
