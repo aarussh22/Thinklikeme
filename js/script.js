@@ -27,12 +27,17 @@ async function fetchChessNews() {
     const data = await res.json();
     container.innerHTML = '';
 
-    (data.items || []).slice(0, 5).forEach(item => {
+    // Just one article for now
+    (data.items || []).slice(0, 1).forEach(item => {
       const a = document.createElement('a');
       a.href = item.link;
       a.target = '_blank';
       a.className = 'news-card';
-      a.innerHTML = `<h3>${item.title}</h3><p>${item.description}</p>`;
+
+      // Strip HTML tags from description
+      const cleanDesc = item.description.replace(/<[^>]+>/g, '').substring(0, 200) + "...";
+
+      a.innerHTML = `<h3>${item.title}</h3><p>${cleanDesc}</p>`;
       container.appendChild(a);
     });
 
@@ -45,6 +50,7 @@ async function fetchChessNews() {
   }
 }
 document.addEventListener('DOMContentLoaded', fetchChessNews);
+
 
 // ===== Feedback slideshow =====
 let reviews = JSON.parse(localStorage.getItem("reviews") || "[]");
