@@ -1,159 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Chess Training – Think Like Me</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Chess Training – Think Like Me</title>
 
-  <!-- Font Awesome (icons) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <!-- Font Awesome (icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
-  <!-- Page CSS -->
-  <link rel="stylesheet" href="css/knight.css" />
+    <!-- Page CSS -->
+    <link rel="stylesheet" href="css/knight.css" />
 </head>
+
 <body>
-  <div class="page-overlay"></div>
+    <div class="page-overlay"></div>
 
-  <div class="content-wrapper">
-    <header class="section-header">
-      <h1>Core topics we focus on</h1>
-      <p class="description">
-        At Think Like Me,<br />
-        we focus on building a strong foundation in chess by teaching essential concepts that develop a player's mind strategically and tactically.
-      </p>
-    </header>
+    <div class="content-wrapper">
+        <header class="section-header">
+            <h1>Core topics we focus on</h1>
+            <p class="description">
+                At Think Like Me,<br />
+                we focus on building a strong foundation in chess by teaching essential concepts that develop a player's
+                mind strategically and tactically.
+            </p>
+        </header>
 
-    <section class="features">
-      <a href="#endgame" class="feature-link" id="open-endgame">
-        <div class="feature-box">
-          <i class="fas fa-chess-king"></i>
-          <h3>Endgame Mastery</h3>
-          <p>Learn critical king and pawn techniques, opposition, triangulation, Lucena, and fortress building.</p>
-        </div>
-      </a>
+        <section class="features">
+            <a href="#endgame" class="feature-link" id="open-endgame">
+                <div class="feature-box">
+                    <i class="fas fa-chess-king"></i>
+                    <h3>Endgame Mastery</h3>
+                    <p>Learn critical king and pawn techniques, opposition, triangulation, Lucena, and fortress
+                        building.</p>
+                </div>
+            </a>
 
-      <a href="#tactics" class="feature-link" id="open-tactics">
-        <div class="feature-box">
-          <i class="fas fa-chess-knight"></i>
-          <h3>Tactical Play</h3>
-          <p>Master sharp calculation—forks, pins, deflections, and combinations that win material or checkmate.</p>
-        </div>
-      </a>
+            <a href="#tactics" class="feature-link" id="open-tactics">
+                <div class="feature-box">
+                    <i class="fas fa-chess-knight"></i>
+                    <h3>Tactical Play</h3>
+                    <p>Master sharp calculation—forks, pins, deflections, and combinations that win material or
+                        checkmate.</p>
+                </div>
+            </a>
 
-      <a href="#positional" class="feature-link" id="open-positional">
-        <div class="feature-box">
-          <i class="fas fa-chess-board"></i>
-          <h3>Positional Play</h3>
-          <p>Control space, improve piece activity, and convert small advantages with deep positional understanding.</p>
-        </div>
-      </a>
-    </section>
-  </div>
-
-  <!-- ===== Modals (Endgame / Tactical / Positional) ===== -->
-
-  <!-- Endgame -->
-  <div id="pyramid-endgame" class="modal" aria-hidden="true" role="dialog" aria-labelledby="pyr-endgame-title">
-    <div class="modal-backdrop" data-close="endgame"></div>
-    <div class="modal-card" role="document" tabindex="-1">
-      <button class="modal-close" data-close="endgame" aria-label="Close">&times;</button>
-      <h2 class="modal-title" id="pyr-endgame-title">Endgame Techniques</h2>
-      <div class="pyramid">
-        <div class="level level-1"><span>♟ Pawn Breakthrough</span></div>
-        <div class="level level-2"><span>♛ Square Rule</span></div>
-        <div class="level level-3"><span>♜ Lucena Position</span></div>
-        <div class="level level-4"><span>♚ Opposition</span></div>
-        <div class="level level-5"><span>♞ Perpetual Check</span></div>
-      </div>
+            <a href="#positional" class="feature-link" id="open-positional">
+                <div class="feature-box">
+                    <i class="fas fa-chess-board"></i>
+                    <h3>Positional Play</h3>
+                    <p>Control space, improve piece activity, and convert small advantages with deep positional
+                        understanding.</p>
+                </div>
+            </a>
+        </section>
     </div>
-  </div>
 
-  <!-- Tactical -->
-  <div id="pyramid-tactics" class="modal" aria-hidden="true" role="dialog" aria-labelledby="pyr-tactics-title">
-    <div class="modal-backdrop" data-close="tactics"></div>
-    <div class="modal-card" role="document" tabindex="-1">
-      <button class="modal-close" data-close="tactics" aria-label="Close">&times;</button>
-      <h2 class="modal-title" id="pyr-tactics-title">Tactical Techniques</h2>
-      <div class="pyramid">
-        <div class="level level-1"><span>♟ Zugzwang</span></div>
-        <div class="level level-2"><span>♛ Double Attack</span></div>
-        <div class="level level-3"><span>♜ Deflection</span></div>
-        <div class="level level-4"><span>♚ Skewer</span></div>
-        <div class="level level-5"><span>♞ Fork</span></div>
-      </div>
+    <!-- ===== Modals (Endgame / Tactical / Positional) ===== -->
+
+    <!-- Endgame -->
+    <div id="pyramid-endgame" class="modal" aria-hidden="true" role="dialog" aria-labelledby="pyr-endgame-title">
+        <div class="modal-backdrop" data-close="endgame"></div>
+        <div class="modal-card" role="document" tabindex="-1">
+            <button class="modal-close" data-close="endgame" aria-label="Close">&times;</button>
+            <h2 class="modal-title" id="pyr-endgame-title">Endgame Techniques</h2>
+            <div class="pyramid">
+                <div class="level level-1"><span>♟ Pawn Breakthrough</span></div>
+                <div class="level level-2"><span>♛ Square Rule</span></div>
+                <div class="level level-3"><span>♜ Lucena Position</span></div>
+                <div class="level level-4"><span>♚ Opposition</span></div>
+                <div class="level level-5"><span>♞ Perpetual Check</span></div>
+            </div>
+        </div>
     </div>
-  </div>
 
-  <!-- Positional -->
-  <div id="pyramid-positional" class="modal" aria-hidden="true" role="dialog" aria-labelledby="pyr-positional-title">
-    <div class="modal-backdrop" data-close="positional"></div>
-    <div class="modal-card" role="document" tabindex="-1">
-      <button class="modal-close" data-close="positional" aria-label="Close">&times;</button>
-      <h2 class="modal-title" id="pyr-positional-title">Positional Advantage</h2>
-      <div class="pyramid">
-        <div class="level level-1"><span>♟ Outposts</span></div>
-        <div class="level level-2"><span>♛ Coordination</span></div>
-        <div class="level level-3"><span>♜ 7th Rank</span></div>
-        <div class="level level-4"><span>♚ Space Advantage</span></div>
-        <div class="level level-5"><span>♞ Exchanges</span></div>
-      </div>
+    <!-- Tactical -->
+    <div id="pyramid-tactics" class="modal" aria-hidden="true" role="dialog" aria-labelledby="pyr-tactics-title">
+        <div class="modal-backdrop" data-close="tactics"></div>
+        <div class="modal-card" role="document" tabindex="-1">
+            <button class="modal-close" data-close="tactics" aria-label="Close">&times;</button>
+            <h2 class="modal-title" id="pyr-tactics-title">Tactical Techniques</h2>
+            <div class="pyramid">
+                <div class="level level-1"><span>♟ Zugzwang</span></div>
+                <div class="level level-2"><span>♛ Double Attack</span></div>
+                <div class="level level-3"><span>♜ Deflection</span></div>
+                <div class="level level-4"><span>♚ Skewer</span></div>
+                <div class="level level-5"><span>♞ Fork</span></div>
+            </div>
+        </div>
     </div>
-  </div>
 
-  <footer>
-    &copy; 2025 Think Like Me – Learn Chess the Smarter Way
-  </footer>
+    <!-- Positional -->
+    <div id="pyramid-positional" class="modal" aria-hidden="true" role="dialog" aria-labelledby="pyr-positional-title">
+        <div class="modal-backdrop" data-close="positional"></div>
+        <div class="modal-card" role="document" tabindex="-1">
+            <button class="modal-close" data-close="positional" aria-label="Close">&times;</button>
+            <h2 class="modal-title" id="pyr-positional-title">Positional Advantage</h2>
+            <div class="pyramid">
+                <div class="level level-1"><span>♟ Outposts</span></div>
+                <div class="level level-2"><span>♛ Coordination</span></div>
+                <div class="level level-3"><span>♜ 7th Rank</span></div>
+                <div class="level level-4"><span>♚ Space Advantage</span></div>
+                <div class="level level-5"><span>♞ Exchanges</span></div>
+            </div>
+        </div>
+    </div>
 
-  <!-- Minimal JS to open/close modals -->
-  <script>
-    (function(){
-      const modals = {
-        endgame: document.getElementById('pyramid-endgame'),
-        tactics: document.getElementById('pyramid-tactics'),
-        positional: document.getElementById('pyramid-positional'),
-      };
-      const triggers = {
-        endgame: document.getElementById('open-endgame'),
-        tactics: document.getElementById('open-tactics'),
-        positional: document.getElementById('open-positional'),
-      };
+    <footer>
+        &copy; 2025 Think Like Me – Learn Chess the Smarter Way
+    </footer>
 
-      function open(which, e){
-        if(e) e.preventDefault();
-        const modal = modals[which];
-        if(!modal) return;
-        modal.setAttribute('aria-hidden', 'false');
-        document.body.style.overflow = 'hidden';
-        modal.querySelector('.modal-card')?.focus();
-      }
-      function close(which){
-        const modal = modals[which];
-        if(!modal) return;
-        modal.setAttribute('aria-hidden', 'true');
-        document.body.style.overflow = '';
-        triggers[which]?.focus();
-      }
+    <!-- Minimal JS to open/close modals -->
+    <script>
+        (function () {
+            const modals = {
+                endgame: document.getElementById('pyramid-endgame'),
+                tactics: document.getElementById('pyramid-tactics'),
+                positional: document.getElementById('pyramid-positional'),
+            };
+            const triggers = {
+                endgame: document.getElementById('open-endgame'),
+                tactics: document.getElementById('open-tactics'),
+                positional: document.getElementById('open-positional'),
+            };
 
-      Object.keys(triggers).forEach(k=>{
-        triggers[k]?.addEventListener('click', open.bind(null, k));
-      });
+            function open(which, e) {
+                if (e) e.preventDefault();
+                const modal = modals[which];
+                if (!modal) return;
+                modal.setAttribute('aria-hidden', 'false');
+                document.body.style.overflow = 'hidden';
+                modal.querySelector('.modal-card')?.focus();
+            }
+            function close(which) {
+                const modal = modals[which];
+                if (!modal) return;
+                modal.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = '';
+                triggers[which]?.focus();
+            }
 
-      // Close buttons & backdrops
-      document.querySelectorAll('.modal-close').forEach(btn=>{
-        btn.addEventListener('click', (e)=> close(e.currentTarget.dataset.close));
-      });
-      document.querySelectorAll('.modal-backdrop').forEach(bg=>{
-        bg.addEventListener('click', (e)=> close(e.currentTarget.dataset.close));
-      });
+            Object.keys(triggers).forEach(k => {
+                triggers[k]?.addEventListener('click', open.bind(null, k));
+            });
 
-      // ESC to close whichever is open
-      document.addEventListener('keydown', (e)=>{
-        if(e.key !== 'Escape') return;
-        for(const [k, modal] of Object.entries(modals)){
-          if(modal.getAttribute('aria-hidden') === 'false'){ close(k); break; }
-        }
-      });
-    })();
-  </script>
+            // Close buttons & backdrops
+            document.querySelectorAll('.modal-close').forEach(btn => {
+                btn.addEventListener('click', (e) => close(e.currentTarget.dataset.close));
+            });
+            document.querySelectorAll('.modal-backdrop').forEach(bg => {
+                bg.addEventListener('click', (e) => close(e.currentTarget.dataset.close));
+            });
+
+            // ESC to close whichever is open
+            document.addEventListener('keydown', (e) => {
+                if (e.key !== 'Escape') return;
+                for (const [k, modal] of Object.entries(modals)) {
+                    if (modal.getAttribute('aria-hidden') === 'false') { close(k); break; }
+                }
+            });
+        })();
+    </script>
 </body>
+
 </html>
