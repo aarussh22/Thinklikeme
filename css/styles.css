@@ -345,3 +345,45 @@ footer {
   .stair-icon .icon { font-size:2.8rem; }
   #heading { font-size: 2.2rem; }
 }
+
+/* --------- Mobile-only refinements (no desktop changes) --------- */
+@media (max-width: 700px) {
+  /* Full-height hero that respects mobile browser UI */
+  @supports (height: 100svh) {
+    #hero { height: 100svh; }
+  }
+
+  /* Make tap targets comfy */
+  .nav-icon { padding: .45rem .6rem; font-size: 1.6rem; }
+  #top-nav { padding: .8rem 1rem; }
+
+  /* Prevent iOS zoom on inputs (needs >=16px) */
+  .review-form input,
+  .review-form textarea,
+  .btn-submit {
+    font-size: 16px;
+  }
+
+  /* Fluid news cards */
+  #news-list { gap: 1rem; padding: 0 .5rem; }
+  .news-card { width: min(100%, 520px); text-align: left; }
+
+  /* Softer effects to keep mobile smooth */
+  .stair-icon:hover { transform: translateY(-2px) scale(1.02); }
+  .news-card:hover  { transform: translateY(-4px); }
+
+  /* Footer breathing room */
+  footer { padding-bottom: 2.6rem; }
+}
+
+/* Tap-to-reveal for staircase orbits on touch devices only */
+@media (hover: none) and (pointer: coarse) {
+  /* Allow a tap state to mimic :hover */
+  .stair-icon.tapped .orbit-svg { opacity: 1; }
+  .stair-icon.tapped .orbit-text { animation-play-state: running; }
+}
+
+/* Respect reduced motion (battery & accessibility) */
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}

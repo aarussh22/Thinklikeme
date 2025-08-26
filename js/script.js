@@ -158,3 +158,41 @@ document.addEventListener("DOMContentLoaded", () => {
   onScroll();
   window.addEventListener("scroll", onScroll, { passive: true });
 });
+
+// --------- Mobile-only helpers (no desktop changes) ---------
+
+// 1) Tap-to-reveal for orbit text on touch devices (mimics :hover)
+(function () {
+  const isTouch = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+  if (!isTouch) return;
+
+  const icons = Array.from(document.querySelectorAll('.stair-icon'));
+  if (!icons.length) return;
+
+  icons.forEach(icon => {
+    icon.addEventListener('click', (e) => {
+      // toggle this one, turn others off (one open at a time feels clean on mobile)
+      const wasOpen = icon.classList.contains('tapped');
+      icons.forEach(i => i.classList.remove('tapped'));
+      if (!wasOpen) icon.classList.add('tapped');
+      // prevent accidental navigation if user is just toggling (2nd tap will follow link)
+      e.preventDefault();
+    }, { passive: false });
+  });
+})();
+
+// 2) Hero heading robustness on mobile: if video fails to autoplay, show heading quickly
+(function () {
+  const video = document.getElementById('bgVideo');
+  const heading = document.getElementById('heading');
+  if (!video || !heading) return;
+
+  // If autoplay is blocked on some devices, make sure heading appears sooner
+  const quickFallback = setTimeout(() => {
+    if (!heading.classList.contains('show')) heading.classList.add('show');
+  }, 1400);
+
+  // If the video actually starts playing, keep your original timing
+  video.addEventListener('playing', () => clearTimeout(quickFallback));
+})();
+
