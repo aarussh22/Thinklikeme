@@ -14,55 +14,186 @@ if (video && heading) {
   setTimeout(showHeroHeading, 2500);
 }
 
-// ===== Fetch Chess News (using chess.com/rss/news) =====
+// ===== Chess News (Chess.com + FIDE + ChessBase) — title + image + first 5 lines
+// ===== Filters: last 2 days only; rotate sets every 1 hour; background pop + random glow
 async function fetchChessNews() {
-  const feedUrl = encodeURIComponent("https://www.chess.com/rss/news");
-  const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${feedUrl}`;
   const container = document.getElementById("news-list");
-  if (!container) return;
-  container.innerHTML = '<p>Loading news…</p>';
+  const section   = document.getElementById("live-chess-news");
+  if (!container || !section) return;
 
+  // Candidate feeds (ChessBase paths can vary)
+  const FEEDS = [
+    { name: "Chess.com", urls: ["https://www.chess.com/rss/news"] },
+    { name: "FIDE",      urls: ["https://www.fide.com/feed", "https://fide.com/feed"] },
+    { name: "ChessBase", urls: ["https://en.chessbase.com/rss", "https://en.chessbase.com/rss/news", "https://en.chessbase.com/rss/feed"] },
+  ];
+
+  const toRss2Json = (url) =>
+    `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(url)}`;
+
+  const escapeHTML = (s = "") =>
+    s.replace(/[&<>"']/g, (c) => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[c]));
+
+  // Keep paragraph breaks, strip tags
+  const htmlToPlainText = (html = "") =>
+    html
+      .replace(/<(p|div|li|br|h[1-6])\b[^>]*>/gi, "\n")
+      .replace(/<[^>]+>/g, "")
+      .replace(/\u00A0/g, " ")
+      .replace(/(\n\s*)+/g, "\n")
+      .trim();
+
+  // First 5 non-empty lines
+  const firstFiveLines = (text = "") => {
+    const lines = text.split("\n").map(l => l.trim()).filter(Boolean);
+    return lines.slice(0, 5).join("\n");
+  };
+
+  // Try to pick an image from common RSS fields or inline HTML
+  const pickImage = (item) => {
+    if (item.thumbnail) return item.thumbnail;
+    if (item.enclosure && item.enclosure.link) return item.enclosure.link;
+    if (Array.isArray(item.enclosures) && item.enclosures[0]?.link) return item.enclosures[0].link;
+    const html = item.content || item.description || "";
+    const m = html.match(/<img[^>]+src=["']([^"']+)["']/i);
+    return m ? m[1] : "";
+  };
+
+  async function loadFeed(feed) {
+    for (const u of feed.urls) {
+      try {
+        const res = await fetch(toRss2Json(u));
+        if (!res.ok) continue;
+        const data  = await res.json();
+        const items = Array.isArray(data.items) ? data.items : [];
+        if (!items.length) continue;
+
+        return items.map(it => {
+          const rawHTML = it.content || it.description || "";
+          return {
+            title:   it.title || "Untitled",
+            link:    it.link  || "#",
+            pubDate: it.pubDate ? new Date(it.pubDate) : new Date(0),
+            source:  feed.name,
+            image:   pickImage(it),
+            preview: firstFiveLines(htmlToPlainText(rawHTML)),
+          };
+        });
+      } catch { /* try next candidate URL */ }
+    }
+    return [];
+  }
+
+  // Show loading with timestamp (local to the browser)
+  const now = new Date();
+  container.innerHTML = `<p>Loading latest news… <small>${now.toLocaleString()}</small></p>`;
+
+  let articles = [];
   try {
-    const res = await fetch(apiUrl);
-    if (!res.ok) throw new Error(`HTTP error ${res.status}`);
-    const data = await res.json();
-    container.innerHTML = '';
+    const results = await Promise.allSettled(FEEDS.map(loadFeed));
+    results.forEach(r => { if (r.status === "fulfilled") articles = articles.concat(r.value); });
+  } catch (e) {
+    console.error("News fetch error:", e);
+  }
 
-    const items = data.items || [];
-    if (items.length === 0) {
-      container.innerHTML = '<p>No news found.</p>';
-      return;
+  // Filter: only last 2 days (48h)
+  const cutoff = new Date(Date.now() - 48 * 60 * 60 * 1000);
+  articles = articles.filter(a => a.pubDate && a.pubDate >= cutoff);
+
+  if (!articles.length) {
+    container.innerHTML = `<p>No recent news (last 48 hours). <small>Checked ${new Date().toLocaleString()}</small></p>`;
+    return;
+  }
+
+  // Prefer latest news
+  articles.sort((a, b) => b.pubDate - a.pubDate);
+
+  // Pool and build rotating sets: 5 items (your CSS places 3 top, 2 offset below)
+  const pool = articles.slice(0, 25);
+  const chunkSize = 5;
+  const sets = [];
+  for (let i = 0; i < pool.length; i += chunkSize) {
+    const slice = pool.slice(i, i + chunkSize);
+    const setEl = document.createElement('div');
+    setEl.className = 'news-set';
+
+    const gridHTML = slice.map(item => {
+      const imageHTML = item.image
+        ? `<img src="${item.image}" alt="" style="width:100%;height:auto;border-radius:8px;margin-bottom:10px;object-fit:cover;">`
+        : "";
+      return `
+        <a class="news-card" href="${item.link}" target="_blank" rel="noopener"
+           style="aspect-ratio:auto; min-height: 220px;">
+          <h3>${escapeHTML(item.title)}</h3>
+          ${imageHTML}
+          <div class="news-desc"
+               style="white-space:pre-line; display:-webkit-box; -webkit-line-clamp:5; -webkit-box-orient:vertical; overflow:hidden; font-size:.95rem; color:#e8e8e8;">
+            ${escapeHTML(item.preview)}
+          </div>
+        </a>
+      `;
+    }).join('');
+
+    setEl.innerHTML = `<div class="news-grid">${gridHTML}</div>`;
+    sets.push(setEl);
+  }
+
+  // Theme pop + random glow
+  let idx = 0, theme = 0, rotateTimer = null, glowTimer = null;
+
+  function startGlowCycle() {
+    if (glowTimer) clearInterval(glowTimer);
+    const cards = Array.from(container.querySelectorAll('.news-card'));
+    if (!cards.length) return;
+
+    let order = cards.map((_, i) => i).sort(() => Math.random() - 0.5);
+    let k = 0;
+
+    function glowNext() {
+      cards.forEach(c => c.classList.remove('glow'));
+      const nextIdx = order[k % order.length];
+      cards[nextIdx].classList.add('glow');
+      k++;
+      if (k % order.length === 0) order = order.sort(() => Math.random() - 0.5);
     }
 
-    // Take just the first item for now
-    const item = items[0];
-    const link = item.link;
-    const title = item.title;
-    const pubDate = item.pubDate ? new Date(item.pubDate).toLocaleString() : '';
-    // Strip HTML from description and shorten
-    const rawDesc = item.description || '';
-    const cleanDesc = rawDesc.replace(/<[^>]+>/g, '').trim();
-    const shortDesc = cleanDesc.length > 200 ? cleanDesc.slice(0, 200) + '…' : cleanDesc;
-
-    const article = document.createElement('article');
-    article.className = 'news-card';
-
-    article.innerHTML = `
-      <h3><a href="${link}" target="_blank" rel="noopener">${title}</a></h3>
-      <small>${pubDate}</small>
-      <p>${shortDesc}</p>
-    `;
-    container.appendChild(article);
+    glowNext();
+    glowTimer = setInterval(glowNext, 1500); // hop every 1.5s
   }
-  catch (err) {
-    console.error('Error fetching news:', err);
-    container.innerHTML = '<p>Failed to load news.</p>';
+
+  function showSet(i, withPop = false) {
+    container.innerHTML = '';
+    const el = sets[i];
+    container.appendChild(el);
+    void el.offsetWidth;              // enable transition
+    el.classList.add('active');
+
+    section.classList.remove('news-theme-0','news-theme-1','news-theme-2');
+    section.classList.add(`news-theme-${theme % 3}`);
+    if (withPop) {
+      section.classList.remove('news-pop');
+      void section.offsetWidth;       // restart bg pop
+      section.classList.add('news-pop');
+    }
+
+    startGlowCycle();
+  }
+
+  // First view
+  showSet(idx, true);
+
+  // Rotate sets every 1 hour
+  if (rotateTimer) clearInterval(rotateTimer);
+  if (sets.length > 1) {
+    rotateTimer = setInterval(() => {
+      idx = (idx + 1) % sets.length;
+      theme = (theme + 1) % 3;
+      showSet(idx, true);
+    }, 3600000); // 1 hour
   }
 }
 
 document.addEventListener('DOMContentLoaded', fetchChessNews);
-
-
 
 // ===== Feedback slideshow =====
 let reviews = JSON.parse(localStorage.getItem("reviews") || "[]");
